@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo %}
+{{ autor.nombres }} 
+{% endblock titulo %}
+
+{% block imagenFondo %}
+{% static 'img/autor.jpg' %}
+{% endblock imagenFondo %}
+
+
+{% block tituloPrincipal %}
+{{ autor.nombres }} {{autor.apellidos}}
+{% endblock tituloPrincipal %}
+
+{% block descripcion %}
+{{ autor.correo }}
+{% endblock descripcion %}
+
+{% block barraBusqueda %}
+{% endblock barraBusqueda %}
+
+{% block body %}
+<!-- Post Content -->
+
+<article>
+    
+    <img src="{{ autor.imagen }}" class="mx-auto d-block" alt="{{ autor.apellidos}}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {{autor.descripcion | safe}}
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock body %}
+
+{% block facebook %}
+{{ autor.facebook }}
+{% endblock facebook %}
+
+{% block twitter %}
+{{ autor.twitter }}
+{% endblock twitter %}
+
+{% block github %}
+{{ autor.github }}
+{% endblock github %}

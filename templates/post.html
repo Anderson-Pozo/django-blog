@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo %}
+{{ detalle_post.titulo }}
+{% endblock titulo %}
+
+{% block imagenFondo %}
+{{ detalle_post.imagen }}
+{% endblock imagenFondo %}
+
+
+{% block tituloPrincipal %}
+{{ detalle_post.titulo }}
+{% endblock tituloPrincipal %}
+
+{% block descripcion %}
+{{ detalle_post.descripcion }}
+{% endblock descripcion %}
+
+{% block barraBusqueda %}
+{% endblock barraBusqueda %}
+
+{% block body %}
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{detalle_post.contenido | safe}}
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock body %}
