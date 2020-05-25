@@ -3,8 +3,7 @@ from .models import Post, Categoria, Autor
 from django.db.models import Q 
 from django.core.paginator import Paginator
 
-# Create your views here.
-#-----------------------VISTA DE INICIO---------------
+
 def home(request):
     queryset = request.GET.get('buscar')
     posts = Post.objects.filter( estado = True)
@@ -18,7 +17,7 @@ def home(request):
 
     return render(request,'index.html', {'posts':posts})
 
-#-----------------------VISTAS DE CATEGORIAS---------------
+
 def tecnologia(request):
     queryset = request.GET.get('buscar')
     posts = Post.objects.filter(
@@ -45,6 +44,7 @@ def programacion(request):
 
     return render(request,'programacion.html',{'posts':posts}) 
 
+
 def actualidad(request):
     queryset = request.GET.get('buscar')
     posts = Post.objects.filter(
@@ -59,18 +59,16 @@ def actualidad(request):
     
     return render(request,'actualidad.html',{'posts':posts})
 
-#---------------------VISTA DE CONTACTO------------------------------
 
 def contacto(request):
     return render(request,'contacto.html')
 
 
-#---------------------DETALLE POST------------------------------
 def detallePost(request,slug,id):
     post = get_object_or_404(Post, slug = slug , id = id)
     return render(request,'post.html',{'detalle_post':post})
 
-#--------------------------VISTA DE AUTOR---------------------------
+
 def autor(request,id):
     autor = get_object_or_404(Autor, id = id)
     if autor.facebook is None:
@@ -82,10 +80,6 @@ def autor(request,id):
     return render(request,'autor.html',{'autor':autor})
 
 
-"""
-Funciones para buscar y paginar utilizadas en cada categoria
-"""
-#------------------BUSQUEDA-----------------------------------
 def busqueda(queryset,categoria):
     posts = Post.objects.filter(
             Q(titulo__icontains = queryset) |
@@ -95,7 +89,7 @@ def busqueda(queryset,categoria):
     ).distinct()
     return posts    
 
-#------------------PAGINADOR-----------------------------------
+
 def paginador(posts, request):
     paginator = Paginator(posts,2)
     page = request.GET.get('page')

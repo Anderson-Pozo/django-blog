@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField 
 
+
 # Create your models here.
 # ------------------------MODELO CATEGORIA----------------------
 class Categoria(models.Model):
