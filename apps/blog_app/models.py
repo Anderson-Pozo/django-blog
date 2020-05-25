@@ -44,6 +44,7 @@ class Autor(models.Model):
     def __str__(self):
         return "{0}, {1}".format(self.apellidos, self.nombres)
 
+
 # ------------------------MODELO POST ----------------------
 class Post(models.Model):
     id = models.AutoField(primary_key = True)
